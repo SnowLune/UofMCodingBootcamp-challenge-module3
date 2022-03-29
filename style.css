@@ -14,7 +14,7 @@ body,
 
 body {
   font-family: sans-serif;
-  background-color: #f9fbfd;
+  background-color: hsl(211, 30%, 86%);
 }
 
 .wrapper {
@@ -31,7 +31,7 @@ header {
 }
 
 .card {
-  background-color: hsl(0, 0%, 100%);
+  background-color: hsl(210, 20%, 99%);
   border-radius: 5px;
   border-width: 1px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
@@ -74,8 +74,8 @@ header {
 
 .btn {
   border: none;
-  background-color: hsl(360, 91%, 36%);
-  border-radius: 30px;
+  background-color: hsl(214, 91%, 36%);
+  border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
     0px;
   color: hsl(0, 0%, 100%);
@@ -89,7 +89,7 @@ header {
 }
 
 .btn:hover {
-  background-color: rgb(216, 12, 12);
+  background-color: hsl(214, 91%, 60%);
 }
 
 button[disabled] {
