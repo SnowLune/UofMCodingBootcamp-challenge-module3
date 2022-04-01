@@ -6,6 +6,7 @@ var c_Lower = "abcdefghijklmnopqrstuvwxyz";
 var c_Upper = c_Lower.toUpperCase();
 var c_Number = "0123456789";
 
+// Message strings
 var msgLength = "Enter desired password length [8 - 128 characters]"
 var msgLower = "Include lowercase letters (a-z)?"
 var msgUpper = "Include uppercase letters (A-Z)?"
@@ -21,8 +22,8 @@ function generatePassword(passwordLength = 16, b_AlphaLower = true,
       console.error("How did this even happen?");
    }
 
-   if (b_AlphaLower === false && b_AlphaUpper === false &&
-            b_Numeric === false && b_Special === false)
+   if (b_AlphaLower === false && b_AlphaUpper === false 
+            && b_Numeric === false && b_Special === false)
    {
       console.error("No criteria set, using lowercase only");
       b_AlphaLower = true;
@@ -32,31 +33,26 @@ function generatePassword(passwordLength = 16, b_AlphaLower = true,
    chars = "";
    if (b_AlphaLower === true)
    {
-      chars = chars + c_Lower;
+      chars += c_Lower;
    }
-
    if (b_AlphaUpper === true)
    {
-      chars = chars + c_Upper;
+      chars += c_Upper;
    }
-
    if (b_Numeric === true)
    {
-      chars = chars + c_Number;
+      chars += c_Number;
    }
-
    if (b_Special === true)
    {
-      chars = chars + c_Special;
+      chars += c_Special;
    }
 
    // Actually generate the password
    var newPassword = "";
-
    for (let i = 0; i < passwordLength; i++)
    {
-      newPassword = newPassword 
-               + chars[Math.floor(Math.random() * chars.length)]
+      newPassword += chars[Math.floor(Math.random() * chars.length)]
    }
 
    return newPassword;
@@ -66,32 +62,31 @@ function generatePassword(passwordLength = 16, b_AlphaLower = true,
 // 0 = length, 1 = lowercase, 2 = uppercase, 3 = number, 4 = special
 function setCriteria(criteria)
 {
-
-   if (criteria === 0)
+   switch (criteria)
    {
-      C = 0;
-      while (C < 8 || C > 128)
-      {
-         C = Number(prompt(msgLength, 16));
-      }
-   }  
-   else if (criteria === 1)
-   {
-      C = confirm(msgLower);
+      case 0:
+         C = 0;
+         while (C < 8 || C > 128)
+         {
+            C = Number(prompt(msgLength, 16));
+         }
+         break;
+      case 1:
+         C = confirm(msgLower);
+         break;
+      case 2:
+         C = confirm(msgUpper);
+         break;
+      case 3:
+         C = confirm(msgNumber);
+         break;
+      case 4:
+         C = confirm(msgSpecial);
+         break;
+      default:
+         console.error("Not a valid criteria");
+         break;
    }
-   else if (criteria === 2)
-   {
-      C = confirm(msgUpper);
-   }
-   else if (criteria === 3)
-   {
-      C = confirm(msgNumber);
-   }
-   else if (criteria === 4)
-   {
-      C = confirm(msgSpecial);
-   }
-   else { console.error("not a valid criteria") }
 
    return C;
 }
